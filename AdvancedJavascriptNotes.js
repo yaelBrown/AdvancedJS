@@ -204,12 +204,156 @@ This is determined the calling of the context. It was determined by the way the 
 
 It has different values depending on where it is used:
 
-In a method, this refers to the owner object.
+In a method, 'this' refers to the owner object.
 Alone, this refers to the global object.
-In a function, this refers to the global object.
+In a function, 'this' refers to the global object.
 In a function, in strict mode, this is undefined.
 In an event, this refers to the element that received the event.
 Methods like call(), and apply() can refer this to any object.
 
 */
+
+/*
+'Call' 'bind' 'apply' are different ways in javascript of locking down and stabilizing what 'this' keyword means when executing different functions.
+Functions are objects that have properties, that also have functions. 
+
+you would use func.call() over regular func() (they both execute the function) because it will stabilize the context of 'this'.
+
+'this' will point to the argument > then to the function >. 
+
+?this keyword
+
+When would you use call() and when would you use apply()?
+  You would use call() if the function takes a variable number of parameter
+*/
+
+// arguments in functions are arrays. 
+
+function sum() {
+  var total = 0;
+  for (var i =0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+  return total;
+}
+
+var things = [1,2,3,4,5,6,7,8,9,10];
+
+// cannot add array as argument, function will generate error
+sum(null, things);
+
+// have to use apply method to add things from variable. 
+var x = sum.apply(null, things);
+
+console.log(x);
+
+/* 
+You can lock down what you want 'this' to be by using the bind() expression. 
+*/
+
+var a = func() {
+  console.log(this);
+};
+
+a(); //undefined with use stict. 
+
+var a = func() {
+  console.log(this);
+}.bind(1); // binds 'this' to 1.
+
+a(); // 1 
+
+// .bind() only works with function expressions, does not work when you are declaring a function.
+
+var yael = {
+  func: a
+};
+
+yael.func(); // 1
+
+
+
+/*
+What is the prototype chain?
+  Every object js has prototype, when looking for a property, on the object itself. If it can't find it it will search on it's prototype.
+
+  should not use _proto_ in production code
+
+objects link to other objects in whats called a prototype chain
+traverses the chain when looking for a property
+returns undefined when it cannot find chain
+
+can assign parameters using create() method. 
+*/
+
+var animal = {
+  kind: 'human'
+};
+
+console.log(animal);
+
+var yael = {};
+
+yael._proto_ = animal;
+
+console.log(yael.kind);
+
+// lookups are dynamic.
+
+
+
+/* 
+What is the difference between classical and prototypical inheritance. 
+
+Classical inheritance - You build a object based on parameters in __proto__ 
+Prototypal inheritance - You build a object based on a existing object
+
+People call this:  Pseudo Classical Inheritance or Classical Inheritance (incorrect) or Constructor pattern
+
+class describes behavior of functions. 
+  can mimic one with a function constructor. 
+
+*/
+
+// Constructor class
+function Person(fName, lName) {
+  this.fName = fName;
+  this.lName = lName;
+}
+
+var dude = Person("yael", "brown"); // Will generate type error on L320
+// because this keyword is set to the global property. You are trying to find the property first name on the global scope and it's not there. Undefined. 
+
+var dude = new Person("yael", "brown"); // no errors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
