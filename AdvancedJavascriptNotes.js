@@ -321,21 +321,98 @@ function Person(fName, lName) {
   this.lName = lName;
 }
 
+// Return toString of Person Constructor class
+Person.prototype.full_name = function() {
+  return this.fName + ' ' + this.lName;
+}
+
 var dude = Person("yael", "brown"); // Will generate type error on L320
 // because this keyword is set to the global property. You are trying to find the property first name on the global scope and it's not there. Undefined. 
 
 var dude = new Person("yael", "brown"); // no errors
 
+/*
+To inherit parameters from parent function...
+*/
+
+// Constructor class
+function Person(fName, lName) {
+  this.fName = fName;
+  this.lName = lName;
+}
+
+// Child constructor (inheriting from parent constructor)
+function Professional(honorific, fName, lName) {
+  Person.call(this, fName, lName);      // using call() method and then calling the this keyword is the same as super(); in other languages.
+  this.honorific = honorific;
+}
+
+// Returning toString method using information in Professional child constructor. 
+Professional.prototype.professional_name = function() {
+  return this.honorific + ' ' + this.fName + ' ' + this.lName;
+}
+
+// implementing child constructor.
+var prof = new Professional("Mr.", "Yael", "Brown");
+
+console.log(prof.professional_name());  // Mr. Yael Brown
+console.log(prof.full_name());          // typeError
+
+/* 
+prof.full_name() is not apart of the prototype of Person, or the Person.prototype. 
+  Will have to use code to add it.
+*/
+
+// Add inheritance into pseudo-classical javascript class.
+Professional.prototype = Object.create(Person.prototype);   // Creates a object in Profession that has contents of person.prototype. 
+
+// We would be able to use prof.full_name() function now.
+console.log(prof.full_name());            // Yael Brown
 
 
 
+/* 
+Prototypal inheritance is a alternative oo solution. 
+  more natural oo solution for js
+  it's just the prototype chain
+
+? factory(); 
+
+When would you use the prototype pattern or constructor pattern?
+  const. pattern is used everywhere and is most common. 
+    java c++ will feel more natural.
+    allows constuct of private variables
+  proto pattern is very easy to understand
+    feels more natural to js
+
+Constructor pattern consists of "new" keyword. Similar to Java and C++
+
+It depends on what the team prefers. 
+*/
 
 
 
+/*
+CORS - Cross Origin Resource Sharing. 
+  The response gets blocked in CORS.
+    Access-Control-Allow-Origin
+
+  Pre-flight request.
+    Access-Control-Request-Method
+    Browser sends OPTIONS request to see if it can send a POST request later on
+    Access-Control-Rquest-Method: POST, PUT, GET, DELETE will need those specific values for acceptable response to allow POST request. 
+
+test-cors.org
+  Lets you test requests, acts like client and server
+*/
 
 
 
-
+/*
+JSONP - Pre-dates the cors standard. Solves same problem as cors but with limitations
+  Only works with GET requests
+  if the server supports JSONP then "why the hell not?"
+*/
 
 
 
