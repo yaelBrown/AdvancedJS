@@ -416,11 +416,37 @@ JSONP - Pre-dates the cors standard. Solves same problem as cors but with limita
 
 
 
+/*
+Difference between event bubbling and capturing in JS. 
+  When you click on something, theres 2 phases that event travels on. 
+    event capturing window > button
+    event bubbling button > window
+  Can add addeventlisteners that listen to those two phases. 
+
+  Event capturing phase, phase 1  
+    Events traverse down the stack, from window to document to body then to following divs.
+  event bubbling phase, phase 2  
+    Then carries back up the stack back to the root. 
+
+  You can add event listeners that listens to either phase 1 or phase 2. 
+    If you don't specify then it automatically uses phase 2. 
+
+  .addEventListener(arg, arg, boolean)
+    boolean = false, is the bubbling phase
+    boolean = true, is the capturing phase
+*/
 
 
 
-
-
+/*
+Difference between stop propagation and preventDefault?
+  stopPropagation() - stops the event from bubbling or capturing phase.
+    Stop event from moving to the next callback.
+    propagation is not asynchronous.
+  preventDefault() - does not stop the event from propagates
+    stops the default behavior on whatever element you performed the event on
+      on checkbox it would stop the tick from being applied on a checkbox. 
+*/
 
 
 
