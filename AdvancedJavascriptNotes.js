@@ -1,3 +1,8 @@
+/*
+  File is written to not be ran. 
+  Only use this for notes.
+*/
+
 console.log("hello");
 
 // Concatenation
@@ -89,6 +94,16 @@ const todoText = todos.filter(function(todo) { // assigns to
 });
 
 console.log(todoText);
+
+/*
+  if you do number with or statement, computer only reads number first then prints it out.
+  12 || true // 12
+  12 && true // true
+
+  With mixed datatype:
+    || shows first value
+    && shows second value
+*/
 
 // || is logical OR. [condition] || [condition], both either one of the conditions have to be true for statement to be true.
 
