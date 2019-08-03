@@ -1,5 +1,11 @@
 console.log("hello");
 
+/*
+  jsbin.com - online js editor
+
+*/
+
+
 // Concatenation
 console.log('My name is ' + name + ' and I am ' + age);
 
@@ -105,7 +111,12 @@ function addNums (num1 = 1, num2 = 1) {
 
 addNums(); // should return 2
 
-// convert to arrow function
+// var [variable name] = (parameters) => return ...;
+// Don't need parenthesis if you have one argument. 
+//  var fn = a => a + 5;
+
+
+// convert to arrow function (fat arrow)
 const addNums = (num1 = 1, num2 = 1) => num1 + num2;
 
 // Date Object https://devdocs.io/javascript-date/
@@ -273,6 +284,13 @@ c !== c;     // false
 
 
 /*
+Declare things (variables) before using them. 
+
+let - is block scope defined variable. 
+const - are pointers that cannot be changed
+  the pointer does not change, only the value. 
+  can change const if its a object. 
+
 Global scope variables, variables defined outside of a code block
   npm,            var global.val;
   browser,        var window.val;
