@@ -1,5 +1,5 @@
 /*
-  File is written to not be ran. 
+  File is written to not be ran.
   Only use this for notes.
 */
 
@@ -47,7 +47,8 @@ const person = {
   // Just print out movies
 person.hobbies[1];
 
-// Destructuring
+// Destructuring. Array Destructuring you pull them out by position. For object destructuring you pull them out by their property name.
+
 const { firstName, lastName } = person;   // creates variable firstName with value John... etc
 
 const todos = [
@@ -127,7 +128,7 @@ function addNums (num1 = 1, num2 = 1) {
 addNums(); // should return 2
 
 // var [variable name] = (parameters) => return ...;
-// Don't need parenthesis if you have one argument. 
+// Don't need parenthesis if you have one argument.
 //  var fn = a => a + 5;
 
 
@@ -169,6 +170,103 @@ class Person {
   }
 }
 
+/* rest operator turns a parameter into an array */
+// "...var"
+
+function sumUp(...toAdd) {
+  console.log(toAdd);    // [100, 10, "20"]
+  let result = 0;
+  for (let i = 0; i < toAdd.length; i++) {
+    result += toAdd[i];
+  }
+  return result;
+}
+
+console.log(sumUp(100, 10, "20"));    // "11020"
+
+// Spread is used to split up an array into a list of values. (where as rest is used to take a list of values and convert to array).
+
+let numbers = [1,2,3,4,5];
+
+console.log(Math.max(numbers));    // NaN
+
+console.log(Math.max(...numbers)); // 5
+
+// for-of loop, shorthand for printing out a array. Without having to do a long for loop.
+
+let testResults = [1.23, 1.10, 4.1];
+
+for (let testResult of testResults) {
+  console.log(testResult); // prints: 1.23   1.1   4.1
+}
+
+// template litterals are used to dynamically output values. (Good for if the variable is multi-lined)
+// can escape the variable using a backslash and it will display the code as a string.
+
+let name = 'Yael';
+
+let description = `
+  Hello, I'm ${name}
+`;
+
+console.log(description);
+
+
+
+
+/* ES6 has module support built in. Does not run natively in browser yet, needs a complier like Traceur. */
+// modules dont have a shared, global scope. Instead each module has its own scope.
+
+// Concept of modules is being able to use more than one js file. Export and Import functionality
+// 1.js
+export let keyValue = 1000;
+
+// 2.js
+import {keyValue} from './1.js'; // usually you just import from just the module name.
+
+/* can export functions.... anything from file.
+  you are not importing the value, you are importing the references to them.
+*/
+
+/* inheritance is about having a parent blueprint and creating specific blueprints from that */
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  greet() {
+    console.log('Hello, my name is ' + this.name + ' and I am ' + this.age);
+  }
+}
+
+class Max extends Person {
+  constructor(age) {
+    super('Max');
+    this.age = age;
+  }
+}
+
+let max = new Max(27);
+
+// Extending lets you use all features classes that the parent class creates.
+// Can call methods from the parent using super.[parameter].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -176,6 +274,7 @@ class Person {
 "use strict";
   // It is a string
   // When the feature was first implemented it, new browsers did not support it.
+  // modules are always in strict mode.
 
 // Not strict mode..
 function newCode() {
@@ -299,12 +398,12 @@ c !== c;     // false
 
 
 /*
-Declare things (variables) before using them. 
+Declare things (variables) before using them.
 
-let - is block scope defined variable. 
+let - is block scope defined variable.
 const - are pointers that cannot be changed
-  the pointer does not change, only the value. 
-  can change const if its a object. 
+  the pointer does not change, only the value.
+  can change const if its a object.
 
 Global scope variables, variables defined outside of a code block
   npm,            var global.val;
