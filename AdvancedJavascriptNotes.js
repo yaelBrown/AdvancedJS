@@ -372,6 +372,9 @@ function *select() {     // add the star infront of its name, turns it into a ge
   yield 'garage';
 }
 
+let it = select();
+console.log(it.next());     // returns a object.
+
 
 
 
