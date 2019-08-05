@@ -300,15 +300,77 @@ console.log(person.name);
 
 
 
-/* Symbols are a new primitive type and they present a unit identifier. */
+/*
+Symbols are a new primitive type and they present a unit identifier.
+Used for storing Meta data of an object.
+Symbols are identifier for object properties. That's the datatypes only purpose.
+Often referred to as "Symbol Value"
+'Meta programming'
+Well known symbols are on the MDN.
+*/
+
+let symbol = Symbol('debug');
+console.log(Symbol);    // displays a object called symbol
+
+let obj = {
+  name: 'Yael',
+  [symbol]: 27
+}
+
+console.log(obj);    // Will print out object with name, but not show symbol.
+console.log(obj[symbol]);    // will explicitly show only the symbol.
+
+// There are unique id's for symbols. Or reused id's.
+
+let symbol1 = Symbol.for('age');    // shared symbols
+let symbol2 = Symbol.for('age');
+
+console.log(symbol1 == symbol2);    // true
+
+let person = {
+  name: 'Yael'
+}
+
+function makeAge(person) {
+  let ageSymbol = Symbol.for('age');
+  person[ageSymbol] = 27;
+}
+
+makeAge(person);
+
+console.log(person[symbol1]);    // 27
+
+// Symbol properties do not override object properties of the same name.
 
 
 
 
+/*
+Iterators and Generators
+Iterators - know how to access values in a collection one at a time. (Ex: An array)
+Generators - a function that does not run to the end when you execute it.
+*/
 
+let array = [1, 2, 3];
 
+console.log(typeof array[Symbol.iterator]);     // "function"
 
+let it = array[Symbol.iterator]();
 
+// iterator steps through the array.
+
+console.log(it);    // [object Array Iterator]
+console.log(it.next());    // [object Object] { done: false, value: 1 }
+console.log(it.next());    // [object Object] { done: false, value: 2 }
+console.log(it.next());    // [object Object] { done: false, value: 3 }
+console.log(it.next());    // [object Object] { done: true, value: undefined }
+
+// generator
+
+function *select() {     // add the star infront of its name, turns it into a generator
+  yield 'house';
+  yield 'garage';
+}
 
 
 
