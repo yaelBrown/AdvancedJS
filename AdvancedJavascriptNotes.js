@@ -252,12 +252,55 @@ let max = new Max(27);
 // Extending lets you use all features classes that the parent class creates.
 // Can call methods from the parent using super.[parameter].
 
+/* add static to methods within classes, in order to use them without creating a new object. */
+
+class Helper {
+  static logTwice(message) {
+    console.log(message);
+    console.log(message);
+  }
+}
+
+Helper.logTwice("cool");
+
+// using getters and setters in js
+
+class Person {
+  constructor(name) {
+    this._name = name;
+  }
+
+  get name() {     // getter for name
+    return this.)name.toUpperCase();    // can control the output of name with a getter (benefit)
+  }
+
+  set name(value) {    // setter for name
+    if (value.length > 2) {
+      this._name = value;
+    }
+    console.log('Rejected!');
+  };
+};
+
+let person = new Person('Yael');
+
+console.log(person.name);
+
+person.name = 'browne';
+
+console.log(person.name);
+
+// Can extend classes with subclassing.
+//   Array is subclassable
+//   RegExp is subclassable
+//   Function is subclassable
+//   Promise is subclassable
+//   Miscellaneous is subclassable
 
 
 
 
-
-
+/* Symbols are a new primitive type and they present a unit identifier. */
 
 
 
