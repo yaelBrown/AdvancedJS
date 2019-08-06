@@ -7,9 +7,7 @@ console.log("hello");
 
 /*
   jsbin.com - online js editor
-
 */
-
 
 // Concatenation
 console.log('My name is ' + name + ' and I am ' + age);
@@ -377,6 +375,42 @@ console.log(it.next());     // returns a object.
 
 
 
+
+/*
+  Promises - Are useful helpers objects to help with asynchronous tasks
+    The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+    Was not apart of ES5.
+    Callback Hell
+    Can chain promises
+    Now officially built into ES6
+*/
+
+let promise = new Promise(function(resolve, reject) {    // reject is for when the promise fails
+  setTimeout(function() {
+    resolve('Done!');    // It's passed to parameter resolve
+  }, 1500);    // Time is in miliseconds
+});
+
+prmoise.then();    // Run this when promise is done. Typically used to handle code that you recieved from promise. 
+
+// Promises can be chained. 
+function waitASecond(seconds) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      seconds++;
+      resolve(seconds);
+    }, 1000);
+  })
+}
+
+waitASecond(0)
+  .then(waitASecond)
+  .then(function(seconds) {
+    console.log(seconds);
+  })
+
+// Promise.all - Combines all promise into one promise. Wait for all promises finish. Only if all are finished, then all() with run. 
+// Promise.race - Waits for the first promise to finish then runs race().
 
 // Allows you to place the program in a strict operating mode context.
 "use strict";
