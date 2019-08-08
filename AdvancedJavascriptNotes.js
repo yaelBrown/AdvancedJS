@@ -391,9 +391,9 @@ let promise = new Promise(function(resolve, reject) {    // reject is for when t
   }, 1500);    // Time is in miliseconds
 });
 
-prmoise.then();    // Run this when promise is done. Typically used to handle code that you recieved from promise. 
+prmoise.then();    // Run this when promise is done. Typically used to handle code that you recieved from promise.
 
-// Promises can be chained. 
+// Promises can be chained.
 function waitASecond(seconds) {
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
@@ -409,8 +409,55 @@ waitASecond(0)
     console.log(seconds);
   })
 
-// Promise.all - Combines all promise into one promise. Wait for all promises finish. Only if all are finished, then all() with run. 
+// Promise.all - Combines all promise into one promise. Wait for all promises finish. Only if all are finished, then all() with run.
 // Promise.race - Waits for the first promise to finish then runs race().
+
+
+
+
+/*
+  Object Extensions - are the functions for built in objects. For example: Math.abs() .... abs is the extension.
+*/
+
+// You can combine parameters in a object to create new objects.
+
+var obj1 = {
+  a: 1
+}
+
+var obj2 = {
+  b: 2
+}
+
+var obj = Object.assign(obj1, obj2);    // using assign() method can merge objects
+
+console.log(obj);    // [object Object] { a: 1, b: 2 }
+
+// it will use the prototype of the first object. First object would be the base.
+
+Math.trunc() // removes the numbers after the decimal point.
+
+// new iterator syntax
+
+let it = array.entries();    // could just be any array
+
+for (let element of it) {
+  console.log(element);    // Iterates over array and prints each item to line.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Allows you to place the program in a strict operating mode context.
 "use strict";
