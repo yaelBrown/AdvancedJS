@@ -227,6 +227,7 @@ import {keyValue} from './1.js'; // usually you just import from just the module
 */
 
 /* inheritance is about having a parent blueprint and creating specific blueprints from that */
+// Purpose is to prevent writing same code mulitple times.
 
 class Person {
   constructor(name) {
