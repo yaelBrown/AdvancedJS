@@ -1,4 +1,4 @@
-/*
+
   File is written to not be ran.
   Only use this for notes.
 */
@@ -270,7 +270,7 @@ class Person {
   }
 
   get name() {     // getter for name
-    return this.)name.toUpperCase();    // can control the output of name with a getter (benefit)
+    return this.name.toUpperCase();    // can control the output of name with a getter (benefit)
   }
 
   set name(value) {    // setter for name
@@ -445,6 +445,69 @@ let it = array.entries();    // could just be any array
 for (let element of it) {
   console.log(element);    // Iterates over array and prints each item to line.
 }
+
+
+
+
+/*
+  Maps and sets - Maps are key value pairs.
+    New to ES6. 
+    Map Object. https://devdocs.io/javascript/global_objects/map
+    Is a collection which basically maps, key value pairs. 
+    (Basically a object that holds references to other objects)
+*/
+
+// map objects
+
+let cardAce = {
+  name: 'Ace of Spades';
+};
+
+let cardKing = {
+  name: 'King of Clubs';
+};
+
+let deck = new Map();
+deck.set('as', cardAce);    // stored the values up cardAce with 'as' key. 
+deck.set('kc', cardKing);
+
+// deck is a different object.
+
+console.log(deck.size);    // 2 
+
+console.log(deck.get('as'));    // [object Object] { name: "Ace of Spades" }
+
+// set values with a set method. Get values with a get method. 
+
+
+deck.delete('as');
+
+console.log(deck.get('as'));    // undefined.
+
+deck.clear();    // Removes all the key value pairs. 
+
+for (key of deck.keys()) {   // for-of-loop will print all the key's. ('as', 'kc', etc.) (can do the same for values() )
+  console.log(key);
+}
+
+deck.entries()    // put in a for-of-loop will return both keys and values. It will output as object's. 
+
+/*
+WeakMap() - Your key has to be a javascript object. Not a primitive such as string used above
+    https://devdocs.io/javascript/global_objects/weakmap
+    Called weakmap because it uses weak entries for key.
+    Deletes entries that you are fetching. Garbage collection
+    On it's own, it alters your map and frees up memory and performance increase by garbage collection.
+    Cannot loop through it
+*/
+
+// set is kindof like a array with only unique values. Same items can only appear once. 
+
+// WeakSet() - may only store objects. Value has to be objects. Js is able clean up unused objects. 
+
+
+
+
 
 
 
@@ -914,4 +977,3 @@ Difference between stop propagation and preventDefault?
   preventDefault() - does not stop the event from propagates
     stops the default behavior on whatever element you performed the event on
       on checkbox it would stop the tick from being applied on a checkbox.
-*/
