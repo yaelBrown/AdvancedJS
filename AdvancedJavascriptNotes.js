@@ -508,10 +508,37 @@ WeakMap() - Your key has to be a javascript object. Not a primitive such as stri
 
 
 
+/*
+  Reflect API - Meta Programming - tools to evaluate program at runtime. 
+    bundles everything. 
+    new features and new methods
+    works well with proxy api
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect
 
 
+*/
+
+// create new obj
+
+class Person {
+  constructor(name){
+    this.name = name;
+  }
+}
 
 
+function TopObj() {
+  this.age = 27;
+}
+
+let person = Reflect.construct(Person, [], TopObj); // target function, argumentsList, newTarget (for prototype functions)
+
+console.log(person._proto_ == TopObj.prototype);
+
+// Reflect.apply(); - Don't understand. ?
+
+__proto__ // for es6, single underscore is es5.
 
 
 
