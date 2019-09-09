@@ -100,6 +100,20 @@ const todoText = todos.filter(function(todo) { // assigns to
 
 console.log(todoText);
 
+// reduce
+const numbers = [1, -1, 2, 3];
+
+let sum = 0;
+for (let n of numbers)
+  sum += n
+
+console.log(sum) // 5
+
+  // reduce has 2 methods, callback function and starting value
+numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
 /*
   if you do number with or statement, computer only reads number first then prints it out.
   12 || true // 12
@@ -1004,3 +1018,10 @@ Difference between stop propagation and preventDefault?
   preventDefault() - does not stop the event from propagates
     stops the default behavior on whatever element you performed the event on
       on checkbox it would stop the tick from being applied on a checkbox.
+*/
+
+/*
+TDD Mocks - mock is a dummy object injected into function for testing. 
+  Integration Tests - (relying on system clock is integration test) (should inject time for a mock)
+  End to End tests - With a full database or replication of development environment
+*/
