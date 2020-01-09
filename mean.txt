@@ -1,0 +1,14 @@
+mean 
+
+create new folder
+	create 'server.js' file in folder
+		open powershell 'node ./server.js'
+		server starting script is located http://expressjs.com/en/starter/hello-world.html
+	open powershell 'npm install express'
+		install express into current directory
+	Where server.js is, that's the local directory
+	Create folder './public'
+
+run server
+	'node ./server.js'
+		goto 'http://localhost:3000'

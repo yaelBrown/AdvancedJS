@@ -1,0 +1,50 @@
+Angular JS Notes.txt
+
+	ng-app = directive, defines AJS app
+	ng-model = directive, binds controls (input, select, textarea)
+	ng-bind = directive, binds application data to html view. 
+	ng-init = directive, sets variables in AJS apps
+		
+		<div ng-app"" ng-init="firstname='john'">
+		<p> The name name is <span ng-bind="firstname"</span></p>
+		</div>
+
+	{{ expression }} - AJS Expressions
+
+		<div ng-app="">
+		<p>My first expression {{ 5 + 5 }}</p>
+		</div>
+
+AJS Apps
+
+	modules - define AJS apps
+	controllers - control AJS apps
+
+	ng-app = defines the app
+	ng-controller = defines the controller
+
+		<div ng-app="myApp" ng-controller="myCtrl">
+		First Name: <input type="text" ng-model="firstName"><br>
+		Last Name: <input type="text" ng-model="lastName"><br>
+		<br>
+		Full Name: {{firstName + " " + lastName}}
+		</div>
+		<script>
+		var app = angular.module('myApp', []); 
+				// '[]' are used to define dependent modules
+		app.controller('myCtrl', function($scope) {
+		    $scope.firstName= "John";
+		    $scope.lastName= "Doe";
+		});
+		</script>
+
+	angular.module = creates AJS modules
+
+		<div ng-app="myApp">...</div>
+		<script>
+		var app = angular.module("myApp", []); 
+		</script>
+
+	Can add controllers, directives, filters and more to AJS applications. 
+
+		<div ng-app="myApp" ng-controller="myCtrl"></div>
